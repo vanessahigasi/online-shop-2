@@ -1,12 +1,13 @@
-package tech.bts.onlineshop;
+package tech.bts.onlineshop.model;
+
 
 public class Product {
 
     private String name;
-    private Double price;
+    private double price;
     private boolean available;
 
-    public Product(String name, Double price) {
+    public Product(String name, double price) {
         this.name = name;
         this.price = price;
         this.available = true;
@@ -16,7 +17,7 @@ public class Product {
         return name;
     }
 
-    public Double getPrice() {
+    public double getPrice() {
         return price;
     }
 
