@@ -12,7 +12,7 @@ public class Example {
 
     public static void main(String[] args) {
 
-        Product p1 = new  Product("macbook",1500);
+        Product p1 = new  Product("Macbook",1500);
         Product p2 = new  Product("iphone xs",1200);
         Product p3 = new  Product("pixel 3",900);
 
@@ -25,7 +25,11 @@ public class Example {
         ShoppingCart cart = new ShoppingCart(items1);
 
         PurchaseService purchaseService = new PurchaseService();
-        purchaseService.calculateTotalAmount(cart);
+
+        double total = purchaseService.calculateTotalAmount(cart);
+
+        System.out.println("total = " + total);
+
 
 
 
