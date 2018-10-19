@@ -2,7 +2,9 @@ package tech.bts.onlineshop.data;
 
 import tech.bts.onlineshop.model.Product;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ProductDatabase {
@@ -41,4 +43,30 @@ public class ProductDatabase {
         return productMap.size();
 
     }
+
+    //TODO: meyhod getByPriceRange, given 2 prices (minPrice, masPrice) returns a list
+    // of products that are in that price range (included)
+
+    //TODO: method remove, given an id, removes that product from the database
+
+    //method getByBrand that returns a list of products (of that brand)
+
+    public List<Product> getByBrand (String brand) {
+        List<Product> result = new ArrayList<>();
+
+        for (Product product : productMap.values()) {
+            if (product.getBrand().equals(brand)) {
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+
+    public int getCountByBrand(String brand) {
+
+        List<Product> products = getByBrand(brand);
+        return products.size(); //number
+    }
+
 }
