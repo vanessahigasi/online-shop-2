@@ -1,15 +1,10 @@
 package tech.bts.onlineshop;
 
-import tech.bts.onlineshop.business.PurchaseService;
-import tech.bts.onlineshop.data.ProductDatabase;
-import tech.bts.onlineshop.model.CartItem;
-import tech.bts.onlineshop.model.Product;
-import tech.bts.onlineshop.model.ShoppingCart;
 
-import java.util.ArrayList;
+import tech.bts.onlineshop.data.ProductDatabase;
+import tech.bts.onlineshop.model.Product;
 import java.util.Collection;
 import java.util.List;
-import java.util.Map;
 
 
 public class Example {
@@ -25,7 +20,7 @@ public class Example {
         productDatabase.add(p2);
         productDatabase.add(p3);
 
-        System.out.println("p1 is available?" + p1.isAvailable());
+        System.out.println("p1 is available? " + p1.isAvailable());
 
 
         Product product = productDatabase.get(3);
@@ -44,21 +39,6 @@ public class Example {
             System.out.println(p.getName() + ", " + p.getBrand() + ", " + p.getPrice());
 
         }
-
-
-        List<CartItem> items1 = new ArrayList<>();
-
-        items1.add(new CartItem(p1,2));
-        items1.add(new CartItem(p2,3));
-        items1.add(new CartItem(p3,1));
-
-        ShoppingCart cart = new ShoppingCart(items1);
-
-        PurchaseService purchaseService = new PurchaseService();
-
-        double total = purchaseService.calculateTotalAmount(cart);
-
-        System.out.println("total = " + total);
 
         productDatabase.getCount();
 
