@@ -2,10 +2,7 @@ package tech.bts.onlineshop.data;
 
 import tech.bts.onlineshop.model.Product;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ProductDatabase {
 
@@ -44,10 +41,43 @@ public class ProductDatabase {
 
     }
 
-    //TODO: meyhod getByPriceRange, given 2 prices (minPrice, masPrice) returns a list
-    // of products that are in that price range (included)
 
-    //TODO: method remove, given an id, removes that product from the database
+    /**
+     * Given 2 prices (min, max) returns a list
+     * of products that are in that price range (included)
+     * @param minPrice
+     * @param maxPrice
+     * @return
+     */
+
+    public List<Product> getByPriceRange (double minPrice, double maxPrice) {
+
+        List<Product> result = new ArrayList<>();
+
+        for (Product product : productMap.values()) {
+            if (product.getPrice() >= minPrice && product.getPrice() <= maxPrice) {
+                result.add(product);
+            }
+        }
+        return result;
+    }
+
+
+    /**
+     * Given an id, removes that product from the database
+     * Returns the product that was removed
+     */
+
+    public void remove(long id) {
+
+        productMap.remove(id);
+    }
+
+    public Collection<Product> getAll() {
+
+       return productMap.values();
+    }
+
 
     //method getByBrand that returns a list of products (of that brand)
 

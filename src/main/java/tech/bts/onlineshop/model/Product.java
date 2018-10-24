@@ -7,7 +7,7 @@ public class Product {
     private String name;
     private String brand;
     private double price;
-    private boolean available;
+    private int quantity;
 
 
     //In Java, constants are written in upper case, by convention
@@ -18,7 +18,7 @@ public class Product {
         this.name = name;
         this.brand = brand;
         this.price = price;
-        this.available = true;
+        this.quantity = 0;
 
     }
 
@@ -51,9 +51,6 @@ public class Product {
         this.price = price;
     }
 
-    public void setAvailable(boolean available) {
-        this.available = available;
-    }
 
     public String getName() {
         return name;
@@ -64,7 +61,15 @@ public class Product {
     }
 
     public boolean isAvailable() {
-        return available;
+
+        return  this.quantity > 0;
     }
 
+    public int getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(int quantity) {
+        this.quantity = quantity;
+    }
 }
