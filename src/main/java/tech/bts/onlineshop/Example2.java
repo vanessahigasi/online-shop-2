@@ -8,6 +8,8 @@ public class Example2 {
 
     public static void main(String[] args) {
 
+
+
         ProductDatabase productDatabase = new ProductDatabase();
 
         ProductService productService = new ProductService(productDatabase);

@@ -34,4 +34,22 @@ public class ProductService {
         return p;
     }
 
+    /** Returns true if the given quantity  is available for that product */
+    public boolean checkProductAvailability (long productId, int quantity) {
+
+
+        Product product = productDatabase.get(productId);
+            return product.getQuantity() >= quantity;
+
+        }
+
+    /** Returns the quantity that is possible to deliver for that product*/
+
+    public int getAvailableQuantity(long productId, int quantity){
+
+        Product product = productDatabase.get(productId);
+        return Math.min(product.getQuantity(),quantity);
+    }
+
+
 }
