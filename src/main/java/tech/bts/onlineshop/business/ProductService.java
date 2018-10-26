@@ -20,13 +20,17 @@ public class ProductService {
         return productId;
     }
 
+    public int getCount(){
+        return productDatabase.getCount();
+    }
+
     public void addProductStock (long productId, int quantity) {
 
         Product product = this.productDatabase.get(productId);
-        System.out.println("Current quantity in stock: " + product.getQuantity());
+        //System.out.println("Current quantity in stock: " + product.getQuantity());
 
         int total = product.getQuantity() + quantity;
-        System.out.println("Now the quanity will be " + total);
+        //System.out.println("Now the quantity will be " + total);
 
         product.setQuantity(total);
     }
