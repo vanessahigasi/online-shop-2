@@ -1,80 +1,68 @@
 package tech.bts.onlineshop.business;
 
+import org.junit.Assert;
+import org.junit.Test;
 import tech.bts.onlineshop.data.ProductDatabase;
 import tech.bts.onlineshop.model.Product;
 
 public class ProductServiceTest {
 
-    public static void main(String[] args) {
 
-        empty_catalogs_has_no_products();
-        add_products_to_catalog();
-        product_avalability();
-        product_available_quantity();
-
-    }
-
-
-    private static void empty_catalogs_has_no_products() {
+    @Test
+    public void empty_catalogs_has_no_products() {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
 
         int count = productService.getCount();
         //System.out.println("0 --> " + count);
-        assertEquals(count,0);
+        Assert.assertEquals(0,count);
     }
 
-    private static void add_products_to_catalog() {
+    @Test
+    public void add_products_to_catalog() {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
         long pixelId = productService.createProduct(new Product("pixel","Google",800));
         int count = productService.getCount();
-        assertEquals(count,1);
+        Assert.assertEquals(1,count);
         Product p = productService.getProductById(pixelId);
         //System.out.println("pixel --> " + p.getName());
-        assertEquals(p.getName(),"pixel");
+        Assert.assertEquals("pixel",p.getName());
 
     }
 
-    private static void product_avalability() {
+    @Test
+    public void product_avalability() {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
         long pixelId = productService.createProduct(new Product("pixel","Google",800));
 
         boolean availableBefore = productService.checkProductAvailability(pixelId,500);
-        assertEquals(availableBefore, false);
+        Assert.assertEquals(availableBefore, false);
 
         productService.addProductStock(pixelId,500);
 
         boolean availableAfter = productService.checkProductAvailability(pixelId,500);
-        assertEquals(availableAfter, true);
+        Assert.assertEquals(true, availableAfter);
     }
 
 
-    /** Compares the values and display an error if they are not */
-    private static void assertEquals(Object s1, Object s2) {
-
-        if (!s1.equals(s2)) {
-            //System.out.println(s1 + " is not equal to " + s2);
-            throw new RuntimeException(s1 + " is not equal to " + s2);
-        }
-    }
-
-    private static void product_available_quantity() {
+    @Test
+    public void product_available_quantity() {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
         long tvId = productService.createProduct(new Product("pixel","Google",800));
 
-        assertEquals(productService.getAvailableQuantity(tvId,50), 0);
+        Assert.assertEquals(0, productService.getAvailableQuantity(tvId,50));
 
         productService.addProductStock(tvId,100);
 
-        assertEquals(productService.getAvailableQuantity(tvId,50), 50);
-        assertEquals(productService.getAvailableQuantity(tvId,200), 100);
+        Assert.assertEquals(50, productService.getAvailableQuantity(tvId,50));
+        Assert.assertEquals(100, productService.getAvailableQuantity(tvId,200));
 
     }
 }
