@@ -27,7 +27,8 @@ public class ProductService {
     public void addProductStock (long productId, int quantity) {
 
         Product product = this.productDatabase.get(productId);
-        //System.out.println("Current quantity in stock: " + product.getQuantity());
+        //
+        // System.out.println("Current quantity in stock: " + product.getQuantity());
 
         int total = product.getQuantity() + quantity;
         //System.out.println("Now the quantity will be " + total);

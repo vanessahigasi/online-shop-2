@@ -46,9 +46,6 @@ public class ProductDatabase {
     /**
      * Given 2 prices (min, max) returns a list
      * of products that are in that price range (included)
-     * @param minPrice
-     * @param maxPrice
-     * @return
      */
 
     public List<Product> getByPriceRange (double minPrice, double maxPrice) {

@@ -34,7 +34,7 @@ public class ProductServiceTest {
     }
 
     @Test
-    public void product_avalability() {
+    public void product_availability() {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
@@ -55,14 +55,14 @@ public class ProductServiceTest {
 
         ProductDatabase productDatabase = new ProductDatabase();
         ProductService productService = new ProductService(productDatabase);
-        long tvId = productService.createProduct(new Product("pixel","Google",800));
+        long pixelId = productService.createProduct(new Product("pixel","Google",800));
 
-        Assert.assertEquals(0, productService.getAvailableQuantity(tvId,50));
+        Assert.assertEquals(0, productService.getAvailableQuantity(pixelId,50));
 
-        productService.addProductStock(tvId,100);
+        productService.addProductStock(pixelId,100);
 
-        Assert.assertEquals(50, productService.getAvailableQuantity(tvId,50));
-        Assert.assertEquals(100, productService.getAvailableQuantity(tvId,200));
+        Assert.assertEquals(50, productService.getAvailableQuantity(pixelId,50));
+        Assert.assertEquals(100, productService.getAvailableQuantity(pixelId,200));
 
     }
 }
